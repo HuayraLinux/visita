@@ -107,7 +107,7 @@
 		   </div>
 		   <div class="texto-7">
 				<div class="texto-style-11">
-					<a class="recurso-href" href="recursos/organizacion-de-la-hcdn/documentos/reglamento.pdf"><img class="img-columna-7  hvr-pop recurso-src" src="recursos/organizacion-de-la-hcdn/images/info2/reglamento.png"></a>
+					<a class="recurso-href pdf-link" href="recursos/organizacion-de-la-hcdn/documentos/reglamento.pdf"><img class="img-columna-7  hvr-pop recurso-src" src="recursos/organizacion-de-la-hcdn/images/info2/reglamento.png"></a>
 					La Cámara de Diputados rige su funcionamiento en base a las normas constitucionales, algunas leyes específicas sobre el funcionamiento parlamentario, y especialmente, al Reglamento de la Honorable Cámara de Diputados de la Nación. El Reglamento es una Resolución votada por los propios miembros de la Cámara y sus modificaciones no pueden ser tratadas en sesión sobre "tablas". El mismo define todos los procesos, funciones y acciones que la Cámara puede y debe desarrollar, desde la presentación de proyectos, el trabajo en comisiones, el desarrollo de las sesiones hasta su funcionamiento administrativo.
 				</div>
 		   </div>
@@ -502,10 +502,13 @@
       <script src="../js/script.js"></script>
 	  <script src="js/modals.js"></script>
       <script>
-	   $( document ).ready(function() {
-		 
-		$(".titulo img").addClass("slideDown");
-	  });
+		$(document).ready(function() {
+			$(document.body).on('click', '.pdf-link', function(e) {
+				e.preventDefault();
+				gui.Shell.openItem($(this).attr('href'));
+			});
+			$(".titulo img").addClass("slideDown");
+		});
       </script>
 	  
       <!-- Js Library -->		

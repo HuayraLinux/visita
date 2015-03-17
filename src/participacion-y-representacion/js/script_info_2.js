@@ -49,5 +49,8 @@ $(document).ready(function() {
 			document.location.reload();
 		});
 
-
+	$(document.body).on('click', '.anios-container a', function(e) {
+		e.preventDefault();
+		gui.Shell.openItem($(this).attr('href'));
+	});
 });
