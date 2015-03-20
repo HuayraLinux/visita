@@ -40,6 +40,7 @@ publicar:
 	dch -i
 
 limpiar:
+	rm -r -f dist
 	rm -r -f distwin
 	rm -r -f extras/bins
 	rm -r -f extras/__MACOSX
