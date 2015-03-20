@@ -42,17 +42,18 @@ publicar:
 limpiar:
 	rm -r -f dist
 	rm -r -f distwin
-	rm -r -f extras/bins
+#	rm -r -f extras/bins
 	rm -r -f extras/__MACOSX
 
 
 distwin: limpiar
-	cd extras; unzip bins.zip
+#	cd extras; unzip bins.zip
 	sh extras/distwin.sh
 	makensis distwin/instalador.nsi
 	mkdir dist
 	mv distwin/visita-HCDN_0.0.3.exe dist/
-	open dist
+	@echo "Build completo: el archivo se encuentra en dist"
+#	open dist
 
 crear_deb:
 	dpkg-buildpackage -us -uc
