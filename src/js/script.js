@@ -49,10 +49,10 @@ $(document).ready(function() {
 	var OSPath="Unknown OS";
 
 	if (navigator.appVersion.indexOf("Win") != -1)
-		OSPath="file:///F:/recursos/";
+		OSPath="file:///F:/contenido/recursos/";
 
 	if (navigator.appVersion.indexOf("Linux") != -1)
-		OSPath="/home/alumno/proyectos/recursos/";
+    OSPath="/media/DATOS/contenido/recursos/";
 		//OSPath="file:///media/alumno/DATOS/recursos/";
 
 	$('.recurso-src').each(function(){

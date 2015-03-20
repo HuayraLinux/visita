@@ -1,3 +1,9 @@
+visita (0.5.17) unstable; urgency=medium
+
+  * Cambiada la ubicación de los recursos
+
+ -- Gonzalo Gluzman <dggluz@gmail.com>  Fri, 20 Mar 2015 14:15:36 -0300
+
 visita (0.5.16) unstable; urgency=medium
 
   * Evitando que los subtítulos salgan por default.
