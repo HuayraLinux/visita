@@ -105,7 +105,7 @@ Section "Dummy Section" SecDummy
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
     CreateShortcut "$SMPROGRAMS\$StartMenuFolder\desinstalar.lnk" "$INSTDIR\desinstalar.exe"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\conectar-educativo.lnk" "$INSTDIR\visita.exe"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\visita-HCDN.lnk" "$INSTDIR\visita.exe"
 
   !insertmacro MUI_STARTMENU_WRITE_END
 
