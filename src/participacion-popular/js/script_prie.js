@@ -71,4 +71,14 @@ $(document).ready(function() {
 		videojs("example_video_2").on("ended", function(){
 			this.removeClass('vjs-fullscreen');
 		});
+	videojs("example_video_1").ready(function(){
+		setTimeout(function() {
+			$('.vjs-captions-button').find('.vjs-menu-item').eq(0).click();
+		}, 500);
+	});
+	videojs("example_video_2").ready(function(){
+		setTimeout(function() {
+			$('.vjs-captions-button').find('.vjs-menu-item').eq(0).click();
+		}, 500);
+	});
 });

@@ -1,3 +1,9 @@
+visita (0.5.16) unstable; urgency=medium
+
+  * Evitando que los subtítulos salgan por default.
+
+ -- gonza <gonza@huayra>  Fri, 20 Mar 2015 13:56:12 -0300
+
 visita (0.5.15) unstable; urgency=medium
 
   * Cambios de contenido

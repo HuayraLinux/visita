@@ -90,4 +90,9 @@ $(document).ready(function() {
 		myPlayer.load();
 		myPlayer.play();
 	});
+	videojs("example_video_1").ready(function(){
+		setTimeout(function() {
+			$('.vjs-captions-button').find('.vjs-menu-item').eq(0).click();
+		}, 500);
+	});
 });
