@@ -1,3 +1,15 @@
+visita (0.5.15) unstable; urgency=medium
+
+  * Cambios de contenido
+
+ -- gonza <gonza@huayra>  Fri, 20 Mar 2015 12:57:34 -0300
+
+visita (0.5.14) unstable; urgency=medium
+
+  * Abriendo PDFs con el lector nativo
+
+ -- gonza <gonza@huayra>  Thu, 19 Mar 2015 10:24:35 -0300
+
 visita (0.5.13) unstable; urgency=medium
 
   * Varios cambios, sobre todo de estilos
