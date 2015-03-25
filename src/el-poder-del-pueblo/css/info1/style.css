@@ -1365,15 +1365,15 @@
 }
 
 #lineas-wrapper .linea-1 {
-	background-image: url(/home/alumno/proyectos/recursos/recursos/el-poder-del-pueblo/images/info1/linea1.png);
+	background-image: url(../../images/linea1.png);
 	right: 24%;
 }
 #lineas-wrapper .linea-2 {
-	background-image: url(/home/alumno/proyectos/recursos/recursos/el-poder-del-pueblo/images/info1/linea2.png);
+	background-image: url(../../images/linea2.png);
 	right: 15%;
 }
 #lineas-wrapper .linea-3 {
-	background-image: url(/home/alumno/proyectos/recursos/recursos/el-poder-del-pueblo/images/info1/linea3.png);
+	background-image: url(../../images/linea3.png);
 	right: 7%;
 }
 
