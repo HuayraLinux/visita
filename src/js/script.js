@@ -1,4 +1,6 @@
-var gui = require('nw.gui');
+var gui = require('nw.gui'),
+  fs = require('fs'),
+  ini = require('ini');
 
 jQuery(window).load(function() {
    // Page Preloader
@@ -24,15 +26,13 @@ jQuery(window).load(function() {
 document.onkeydown = function(e) {
   // si pulsa la tecla ESC alterna entre ventana y pantalla completa.
   if (e.keyCode === 27) {
-    var win = gui.Window.get();
-    win.toggleFullscreen();
+    gui.Window.get().toggleFullscreen();
   }
 
 
   // Si pulsa la tecla "i" abre las herramientas de desarrollo.
   if (e.keyCode === 73) {
-    var win = gui.Window.get();
-    win.showDevTools();
+    gui.Window.get().showDevTools();
   }
 
   // Si pulsa la tecla "r" actualiza la pantalla.
@@ -46,29 +46,22 @@ document.onkeydown = function(e) {
 
 //Aquí colocamos el PATH tanto para Huayra como para Windows
 $(document).ready(function() {
-	var OSPath="Unknown OS";
-
-	if (navigator.appVersion.indexOf("Win") != -1)
-		OSPath="file:///F:/contenido/recursos/";
-
-	if (navigator.appVersion.indexOf("Linux") != -1)
-    OSPath="/media/DATOS/contenido/recursos/";
-		//OSPath="file:///media/alumno/DATOS/recursos/";
+  var datosPath = ini.parse(fs.readFileSync('./config.ini', 'utf-8')).datos.path;
 
 	$('.recurso-src').each(function(){
-		$(this).attr('src',OSPath+$(this).attr('src'))
+		$(this).attr('src', datosPath + $(this).attr('src'));
 	});
 
 	$('.recurso-poster').each(function(){
-		$(this).attr('poster',OSPath+$(this).attr('poster'))
+		$(this).attr('poster', datosPath + $(this).attr('poster'));
 	});
 
 	$('.recurso-href').each(function(){
-		$(this).attr('href',OSPath+$(this).attr('href'))
+		$(this).attr('href', datosPath + $(this).attr('href'));
 	});
 
 	$('.playlist').each(function(){
-		$(this).attr('data-video',OSPath+$(this).attr('data-video'));
-		$(this).attr('data-track',OSPath+$(this).attr('data-track'));
+		$(this).attr('data-video',datosPath+$(this).attr('data-video'));
+		$(this).attr('data-track',datosPath+$(this).attr('data-track'));
 	});
 });

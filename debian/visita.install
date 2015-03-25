@@ -2,3 +2,4 @@ src/* usr/share/visita/src
 bin/visita usr/bin/
 debian/visita.desktop /usr/share/applications
 debian/visita.svg /usr/share/icons/hicolor/scalable/apps
+node_modules/ini/* usr/share/visita/node_modules/ini
