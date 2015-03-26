@@ -9,6 +9,7 @@
   "author": "",
   "license": "GPLv3",
   "dependencies": {
-  	"ini": "*"
+  	"ini": "*",
+  	"winreg": "*"
   }
 }

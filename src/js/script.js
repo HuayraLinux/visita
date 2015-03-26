@@ -42,26 +42,49 @@ document.onkeydown = function(e) {
 
 };
 
-
-
 //Aquí colocamos el PATH tanto para Huayra como para Windows
 $(document).ready(function() {
-  var datosPath = ini.parse(fs.readFileSync('./config.ini', 'utf-8')).datos.path;
+  var fixPaths = function(path) {
+    var datosPath = ini.parse(fs.readFileSync(path + '/config.ini', 'utf-8')).datos.path;
+    $('.recurso-src').each(function(){
+      $(this).attr('src', datosPath + $(this).attr('src'));
+    });
 
-	$('.recurso-src').each(function(){
-		$(this).attr('src', datosPath + $(this).attr('src'));
-	});
+    $('.recurso-poster').each(function(){
+      $(this).attr('poster', datosPath + $(this).attr('poster'));
+    });
 
-	$('.recurso-poster').each(function(){
-		$(this).attr('poster', datosPath + $(this).attr('poster'));
-	});
+    $('.recurso-href').each(function(){
+      $(this).attr('href', datosPath + $(this).attr('href'));
+    });
 
-	$('.recurso-href').each(function(){
-		$(this).attr('href', datosPath + $(this).attr('href'));
-	});
+    $('.playlist').each(function(){
+      $(this).attr('data-video',datosPath+$(this).attr('data-video'));
+      $(this).attr('data-track',datosPath+$(this).attr('data-track'));
+    });
+  };
 
-	$('.playlist').each(function(){
-		$(this).attr('data-video',datosPath+$(this).attr('data-video'));
-		$(this).attr('data-track',datosPath+$(this).attr('data-track'));
-	});
+  if(navigator.appVersion.indexOf("Win") != -1) {
+    var Winreg = require('winreg');
+    var regKey = new Winreg({
+      hive: Winreg.HKCU,                                          // HKEY_CURRENT_USER
+      key:  '\\visita-HCDN\\visita-HCDN' // key containing autostart programs
+    });
+
+    // list autostart programs
+    regKey.get('path', function (err, item) {
+      var pathPrefix;
+      if (err) {
+        throw err;
+      }
+      else {
+        pathPrefix = item.value;
+      }
+
+      fixPaths(pathPrefix);
+    });
+  }
+  else {
+    fixPaths('.') ;
+  }
 });
