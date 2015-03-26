@@ -22,6 +22,7 @@ comandos:
 	@echo "    ${G}ver_sync${N}        Sube la nueva version al servidor."
 	@echo ""
 	@echo "    ${G}distwin${N}         Genera las versiones para windows."
+	@echo "    ${G}distwin-completo${N}         Genera las versiones para windows con todos los recursos incluidos."
 	@echo "    ${G}publicar${N}        Incrementa la versión."
 	@echo "    ${G}crear_deb${N}       Empaqueta para huayra."
 	@echo ""
@@ -54,6 +55,12 @@ distwin: limpiar
 	mv distwin/visita-HCDN_0.0.3.exe dist/
 	@echo "Build completo: el archivo se encuentra en dist"
 #	open dist
+distwin-completo: limpiar
+	sh extras/distwin-completo.sh
+	makensis distwin/instalador-completo.nsi
+	mkdir dist
+	mv distwin/completo-visita-HCDN_0.0.4.exe dist/
+	@echo "Build completo: el archivo se encuentra en dist"
 
 crear_deb:
 	dpkg-buildpackage -us -uc

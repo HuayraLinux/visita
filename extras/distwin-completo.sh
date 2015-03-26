@@ -14,7 +14,7 @@ mv distwin.zip visita.nw
 rm -r -f distwin/*
 
 cp -r -f extras/bins/* distwin/
-cp extras/instalador.nsi distwin/
+cp extras/instalador-completo.nsi distwin/
 mv visita.nw distwin/
 cat distwin/nw.exe distwin/visita.nw > distwin/visita.exe
 rm distwin/nw.exe distwin/visita.nw

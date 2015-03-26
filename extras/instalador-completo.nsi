@@ -13,7 +13,7 @@
 
   ;Name and file
   Name "visita-HCDN"
-  OutFile "visita-HCDN_0.0.4.exe"
+  OutFile "completo-visita-HCDN_0.0.4.exe"
 
   ;Default installation folder
   InstallDir "c:\visita-HCDN"
@@ -96,6 +96,11 @@ Section "Dummy Section" SecDummy
 
   ;Store installation folder
   WriteRegStr HKCU "visita-HCDN\visita-HCDN" "" $INSTDIR
+  WriteRegStr HKCU "visita-HCDN\visita-HCDN" "path" $INSTDIR
+
+  ; Copiar los recursos
+  File /r "/media/DATOS/contenido/recursos/*"
+  WriteINIStr "$INSTDIR\config.ini" "datos" "path" "file:///$INSTDIR/"
 
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\desinstalar.exe"
