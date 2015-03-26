@@ -96,6 +96,10 @@ Section "Dummy Section" SecDummy
 
   ;Store installation folder
   WriteRegStr HKCU "visita-HCDN\visita-HCDN" "" $INSTDIR
+  WriteRegStr HKCU "visita-HCDN\visita-HCDN" "path" $INSTDIR
+
+  ; Copiar los recursos
+  WriteINIStr "$INSTDIR\config.ini" "datos" "path" "file:///F:/contenido/recursos/"
 
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\desinstalar.exe"
