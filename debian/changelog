@@ -1,3 +1,10 @@
+visita (0.5.22) UNRELEASED; urgency=medium
+
+  * Todos los recursos incluídos
+  * Corregido el config.ini
+
+ -- Gonzalo Gluzman <dggluz@gmail.com>  Thu, 26 Mar 2015 14:55:47 -0300
+
 visita (0.5.21) unstable; urgency=low
 
   * Leyendo el registro de windows (versión compatible para linux)
