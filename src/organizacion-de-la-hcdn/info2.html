@@ -504,8 +504,13 @@
       <script>
 		$(document).ready(function() {
 			$(document.body).on('click', '.pdf-link', function(e) {
-				e.preventDefault();
-				gui.Shell.openItem($(this).attr('href'));
+				if(typeof gui != 'undefined') {
+					e.preventDefault();
+					gui.Shell.openItem($(this).attr('href'));
+				}
+				else {
+					$(this).attr('target', '_blank');
+				}
 			});
 			$(".titulo img").addClass("slideDown");
 		});
