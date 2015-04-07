@@ -37,7 +37,7 @@ window.sources = (function(require) {
 		var fixPaths = function(path) {
 			var datosPath = gui.getRecursosPath(path);
 
-			$('.recurso-src').each(function(){
+			$('.recurso-src').each(function() {
 				$(this).attr('src', datosPath + $(this).attr('src'));
 			});
 
