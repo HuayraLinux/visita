@@ -1,1 +1,0 @@
-/home/gonza/huayra-dev/visita-HCDN/src/js/main.js
