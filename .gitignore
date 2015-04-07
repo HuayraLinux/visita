@@ -1,6 +1,8 @@
 .DS_Store
 *.DS_Store
 
+src/recursos/
+
 src/images/.DS_Store
 dist
 distwin
