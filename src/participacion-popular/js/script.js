@@ -59,7 +59,7 @@ sources.ready(function() {
 		});
 
 		videojs('example_video_1').on('error', function(){
-		//	document.location.reload();
+			document.location.reload();
 		});
 	}
 	else {
