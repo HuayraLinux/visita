@@ -1,7 +1,3 @@
-document.createElement('video');
-document.createElement('audio');
-document.createElement('track');
-
 sources.ready(function() {
 	$('.container .content .personas .img-personas').each(function() {
 		$(this).appear(function() {
@@ -33,29 +29,28 @@ sources.ready(function() {
 	$('#example_video_1')
 		.attr('width', width_reproductor)
 		.attr('height', height_reproductor);
+	
+	videojs('example_video_1').ready(function(){
+		var myPlayer = this;
+		var button = myPlayer.controlBar.addChild('button', {
+			text: 'alternar'
+		});
+
+		button.addClass('exit-button');
+
+		button.el().onclick = function() {
+			$(myPlayer.el()).toggleClass('vjs-fullscreen');
+		};
+		videojs('example_video_1').on('ended', function(){
+			myPlayer.removeClass('vjs-fullscreen');
+		});
+	});
 
 	if(urlParam('place') == 'home') {
 		videojs('example_video_1').ready(function(){
-
 			myPlayer = this;
-				myPlayer.addClass('vjs-fullscreen');
-				myPlayer.play();
-
-
-			var button = myPlayer.controlBar.addChild('button', {
-				text: 'alternar'
-			});
-
-			button.addClass('exit-button');
-
-			button.el().onclick = function() {
-				$(myPlayer.el()).toggleClass('vjs-fullscreen');
-			};
-
-		});
-
-		videojs('example_video_1').on('ended', function(){
-			myPlayer.removeClass('vjs-fullscreen');
+			myPlayer.addClass('vjs-fullscreen');
+			myPlayer.play();
 		});
 
 		videojs('example_video_1').on('error', function(){

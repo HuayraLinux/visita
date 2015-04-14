@@ -29,31 +29,30 @@ sources.ready(function() {
 	$('#example_video_1').attr( 'width', width_reproductor );
 	$('#example_video_1').attr( 'height', height_reproductor );
 
-	if(urlParam('place') == 'home') {
-		videojs('example_video_1').ready(function(){
-			myPlayer = this;
-
-				myPlayer.addClass('vjs-fullscreen');
-				myPlayer.play();
-				myPlayer.requestFullscreen();
-
-			var button = myPlayer.controlBar.addChild('button', {
-				text: 'alternar'
-			});
-
-			button.addClass('exit-button');
-      
-			window.myPlayer = myPlayer;
-
-			button.el().onclick = function() {
-				$(myPlayer.el()).toggleClass('vjs-fullscreen');
-			};
+	videojs('example_video_1').ready(function() {
+		var myPlayer = this;
+		var button = myPlayer.controlBar.addChild('button', {
+			text: 'alternar'
 		});
+
+		button.addClass('exit-button');
+
+		button.el().onclick = function() {
+			$(myPlayer.el()).toggleClass('vjs-fullscreen');
+		};
 
 		videojs('example_video_1').on('ended', function(){
 			myPlayer.removeClass('vjs-fullscreen');
 		});
+	});
 
+	if(urlParam('place') == 'home') {
+		videojs('example_video_1').ready(function(){
+			myPlayer = this;
+			myPlayer.addClass('vjs-fullscreen');
+			myPlayer.play();
+			myPlayer.requestFullscreen();
+		});
 		videojs('example_video_1').on('error', function(){
 			document.location.reload();
 		});
