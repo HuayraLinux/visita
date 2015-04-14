@@ -60,29 +60,7 @@ window.sources = (function(require) {
 			readyCallbacks = [];
 		};
 
-		if(navigator.appVersion.indexOf('Win') != -1) {
-			var Winreg = require('winreg');
-			var regKey = new Winreg({
-				hive: Winreg.HKCU,                                          // HKEY_CURRENT_USER
-				key:  '\\visita-HCDN\\visita-HCDN' // key containing autostart programs
-			});
-
-			// list autostart programs
-			regKey.get('path', function (err, item) {
-				var pathPrefix;
-				if (err) {
-					throw err;
-				}
-				else {
-					pathPrefix = item.value;
-				}
-
-				fixPaths(pathPrefix);
-			});
-		}
-		else {
-			fixPaths('.') ;
-		}
+		fixPaths('.') ;
 	});
 
 	return {
