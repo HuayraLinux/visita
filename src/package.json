@@ -1,6 +1,7 @@
 {
   "name": "Visitá la casa del pueblo",
   "main": "index.html",
+  "node-main": "js/node-main.js",
   "window": {
     "toolbar": false,
     "position": "center",

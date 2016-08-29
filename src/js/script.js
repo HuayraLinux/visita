@@ -2,6 +2,9 @@ var gui = require('nw.gui'),
   fs = require('fs'),
   ini = require('ini');
 
+/* HACK para setear WM_CLASS */
+process.mainModule.exports.init(require('nwjs-hack').set_wmclass.bind(null, "visita", true));
+
 jQuery(window).load(function() {
    // Page Preloader
    jQuery('#status').fadeOut();
