@@ -4,3 +4,4 @@ debian/visita.desktop /usr/share/applications
 debian/visita.svg /usr/share/icons/hicolor/scalable/apps
 node_modules/ini/* usr/share/visita/node_modules/ini
 node_modules/winreg/* usr/share/visita/node_modules/winreg
+node_modules/nwjs-hack/* usr/share/visita/node_modules/nwjs-hack

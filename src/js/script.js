@@ -1,6 +1,10 @@
-var gui = require('nw.gui'),
-  fs = require('fs'),
-  ini = require('ini');
+var isWindows = navigator.appVersion.indexOf("Win") != -1;
+var gui = require('nw.gui');
+var fs = require('fs');
+var path = require('path');
+var DEFAULT_DATA_DIR = isWindows
+  ? '/media/DATOS/contenido'
+  : 'file:///F:/contenido';
 
 /* HACK para setear WM_CLASS */
 process.mainModule.exports.init(require('nwjs-hack').set_wmclass.bind(null, "visita", true));
@@ -24,8 +28,6 @@ jQuery(window).load(function() {
 
 });
 
-
-
 document.onkeydown = function(e) {
   // si pulsa la tecla ESC alterna entre ventana y pantalla completa.
   if (e.keyCode === 27) {
@@ -46,48 +48,44 @@ document.onkeydown = function(e) {
 };
 
 //Aquí colocamos el PATH tanto para Huayra como para Windows
-$(document).ready(function() {
-  var fixPaths = function(path) {
-    var datosPath = ini.parse(fs.readFileSync(path + '/config.ini', 'utf-8')).datos.path;
-    $('.recurso-src').each(function(){
-      $(this).attr('src', datosPath + $(this).attr('src'));
-    });
-
-    $('.recurso-poster').each(function(){
-      $(this).attr('poster', datosPath + $(this).attr('poster'));
-    });
-
-    $('.recurso-href').each(function(){
-      $(this).attr('href', datosPath + $(this).attr('href'));
-    });
-
-    $('.playlist').each(function(){
-      $(this).attr('data-video',datosPath+$(this).attr('data-video'));
-      $(this).attr('data-track',datosPath+$(this).attr('data-track'));
-    });
+function fixPaths(path) {
+  /* Actualiza un atributo con un path a uno fixeado */
+  function updateAttr(attr) {
+    var newPath = path + $(this).attr(attr).replace(/^recursos/, '');
+    return $(this).attr(attr, newPath);
   };
 
-  if(navigator.appVersion.indexOf("Win") != -1) {
-    var Winreg = require('winreg');
-    var regKey = new Winreg({
-      hive: Winreg.HKCU,                                          // HKEY_CURRENT_USER
-      key:  '\\visita-HCDN\\visita-HCDN' // key containing autostart programs
-    });
-
-    // list autostart programs
-    regKey.get('path', function (err, item) {
-      var pathPrefix;
-      if (err) {
-        throw err;
-      }
-      else {
-        pathPrefix = item.value;
-      }
-
-      fixPaths(pathPrefix);
-    });
+  /* Devuelve una función que realiza el update */
+  function update(attr) {
+    return function() {
+      return updateAttr.call(this, attr);
+    }
   }
-  else {
-    fixPaths('.') ;
+
+  $('.recurso-src').each(update('src'));
+  $('.recurso-poster').each(update('poster'));
+  $('.recurso-href').each(update('href'));
+  $('.playlist').each(update('data-video'));
+  $('.playlist').each(update('data-track'));
+};
+
+/* Nota, este código está copiado en instalar-data.html:9 */
+function hasDataInstalledIn(recursos) {
+  var SENTINEL = '/el-poder-del-pueblo/capitulo51.mp4';
+  var sentinelPath = path.join(recursos, SENTINEL);
+  return fs.existsSync(sentinelPath);
+}
+
+function warnIfNeeded(recursos) {
+  var needed = !hasDataInstalledIn(recursos);
+
+  if(needed) {
+    window.location.href = "instalar-data.html";
   }
+}
+
+$(document).ready(function() {
+  var recursos = localStorage.path || DEFAULT_DATA_DIR;
+  fixPaths(recursos);
+  warnIfNeeded(recursos);
 });

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>No se encontraron los datos de la visita :(</title>
+		<meta charset="UTF-8" />
+
+		<!--CSSs robados de index.html:12-->
+		<!-- Stylesheet -->
+		<link href="css/normalize.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+		<link href="css/flexslider.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/style-index.css" rel="stylesheet">
+		<link href="css/style-responsive.css" rel="stylesheet">
+		<link href="css/isotope.css" rel="stylesheet">
+		<link href="css/animate2.css" rel="stylesheet">
+		<link href="css/full.css" rel="stylesheet">
+		<!-- Primary color theme -->
+		<link id="primary_color_scheme" href="css/color/blu.css" rel="stylesheet">
+
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">
+			var path = require('path');
+			var fs = require('fs');
+
+			/* Nota: este código está copiado en js/script.js:78 */
+			function hasDataInstalledIn(recursos) {
+				var SENTINEL = '/el-poder-del-pueblo/capitulo51.mp4';
+				var sentinelPath = path.join(recursos, SENTINEL);
+				return fs.existsSync(sentinelPath);
+			}
+
+			function warnInvalidSelection(recursos) {
+				$('#invalidFolder').hide(.4, function() {
+					$('#folderPlaceholder').html(recursos);
+					$('#invalidFolder').show(.6);
+				});
+			}
+
+			$(function() {
+				/* Por defecto no hay errores */
+				$('#invalidFolder').hide();
+
+				/* Si selecciono una carpeta */
+				$('#dataPath').change(function(event) {
+					var recursos = $('#dataPath').val();
+
+					if(hasDataInstalledIn(recursos)) {
+						$('#invalidFolder').hide(.3);
+
+						localStorage.path = recursos;
+						window.location.href = "index.html";
+					} else {
+						warnInvalidSelection(recursos);
+					}
+				});
+
+				/* Cuando aprieto el botón de seleccionar carpeta */
+				$('#dataButton').click(function() {
+					$('#dataPath').click();
+				});
+
+				/* Los links externos se abren en el browser del sistema */
+				$('a.external').click(function() {
+					require('nw.gui').Shell.openExternal(this.href);
+					return false;
+				});
+			});
+		</script>
+		<style type="text/css">
+			body {
+				padding-top: 4em;
+			}
+
+			.dialog {
+				width: 45em;
+				display: block;
+				margin: auto;
+				background-color: #FFFFFF;
+				padding: 1em;
+				border: 1px;
+				border-style: solid;
+				border-color: #666666;
+			}
+
+			#dataButton {
+				font-size: 25pt;
+				width: 100%;
+				margin-bottom: 1em;
+			}
+
+			#invalidFolder {
+				background-color: #FFCCCC;
+				border: 1px;
+				border-color: #FFAAAA;
+				border-style: solid;
+				text-align: center;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dialog">
+			<h1>No se encontraron los datos :(</h1>
+
+			<p>La aplicación "Visitá la Casa del Pueblo" permite iniciar un
+			recorrido por la Cámara de Diputados y descubrir respuestas a las
+			preguntas más frecuentes sobre el Poder Legislativo.</p>
+
+			<p>Si ves este mensaje es porque la aplicación funciona, pero no
+			encuentra los datos para funcionar de manera offline.</p>
+
+			<p>Te recomendamos seguir alguna de estas alternativas para
+			conseguir los datos:
+
+				<ul>
+					<li>Descargalos desde internet siguiendo <a class="external" href="http://huayra.conectarigualdad.gob.ar/visita-la-casa-del-pueblo">estas instrucciones</a> (<a class="external" href="http://huayra.conectarigualdad.gob.ar/visita-la-casa-del-pueblo">http://huayra.conectarigualdad.gob.ar/visita-la-casa-del-pueblo</a>)</li>
+
+					<li>Pedile al referente técnico de tu escuela que los cargue en tu netbook</li>
+
+					<li>Pedile a un compañero o profesor que te los pase en un pendrive</li>
+				</ul>
+			</p>
+
+			<button id="dataButton">Ubicar datos</button>
+
+			<div id="invalidFolder">
+				<p>La carpeta que seleccionaste (<strong id="folderPlaceholder"></strong>) no tiene datos válidos</p>
+			</div>
+		</div>
+
+		<input id="dataPath" type="file" style="display:none;" nwdirectory/>
+	</body>
+</html>
