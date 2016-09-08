@@ -1,5 +1,6 @@
 {
-  "name": "Visitá la casa del pueblo",
+  "name": "visita-a-la-casa-del-pueblo",
+  "version": "0.1.0",
   "main": "index.html",
   "node-main": "js/node-main.js",
   "window": {

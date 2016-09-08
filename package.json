@@ -9,8 +9,11 @@
   "author": "",
   "license": "GPLv3",
   "dependencies": {
-        "nwjs-hack": "iglosiggio/nwjs-hack",
-  	"ini": "*",
-  	"winreg": "*"
+    "nwjs-hack": "iglosiggio/nwjs-hack",
+    "ini": "*",
+    "winreg": "*"
+  },
+  "devDependencies": {
+    "nw-builder": "^3.0.0"
   }
 }
