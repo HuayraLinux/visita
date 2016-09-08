@@ -13,7 +13,7 @@
 
   ;Name and file
   Name "visita-HCDN"
-  OutFile "completo-visita-HCDN_0.0.4.exe"
+  OutFile "completo-visita-HCDN_0.5.24.exe"
 
   ;Default installation folder
   InstallDir "c:\visita-HCDN"

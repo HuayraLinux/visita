@@ -1,3 +1,9 @@
+visita (0.5.24) unstable; urgency=medium
+
+  * Bugfix para la build de windows, saltear esta versión
+
+ -- Ignacio Losiggio <iglosiggio@gmail.com>  Thu, 08 Sep 2016 11:07:44 -0300
+
 visita (0.5.23) unstable; urgency=medium
 
   * Agregado un prompt para cuando no se detectan los datos de la aplicación (mantiene los defaults para las netbooks)
