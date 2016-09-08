@@ -1,4 +1,4 @@
-VERSION=0.5.24
+VERSION=0.5.25
 NOMBRE="visita-a-la-casa-del-pueblo"
 
 N=[0m
