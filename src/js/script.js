@@ -6,26 +6,28 @@ var DEFAULT_DATA_DIR = isWindows
   ? '/media/DATOS/contenido'
   : 'file:///F:/contenido';
 
-/* HACK para setear WM_CLASS */
-process.mainModule.exports.init(require('nwjs-hack').set_wmclass.bind(null, "visita", true));
+/* Este hack sólo aplica a la versión de linux, probablemente hacer un process.platform sería mejor pero buem */
+if(!isWindows) {
+  /* HACK para setear WM_CLASS */
+  process.mainModule.exports.init(require('nwjs-hack').set_wmclass.bind(null, "visita", true));
+}
 
 jQuery(window).load(function() {
-   // Page Preloader
-   jQuery('#status').fadeOut();
-   jQuery('#preloader').delay(350).fadeOut(function(){
-      jQuery('body').delay(350).css({'overflow':'visible'});
-   });
+  // Page Preloader
+  jQuery('#status').fadeOut();
+  jQuery('#preloader').delay(350).fadeOut(function(){
+    jQuery('body').delay(350).css({'overflow':'visible'});
+  });
 
-   jQuery('#imagen-cerrar').click(function(e) {
-     var win = gui.Window.get();
-     win.close();
-   });
+  jQuery('#imagen-cerrar').click(function(e) {
+    var win = gui.Window.get();
+    win.close();
+  });
 
-   jQuery('#imagen-alternar').click(function(e) {
-     var win = gui.Window.get();
-     win.toggleFullscreen();
-   });
-
+  jQuery('#imagen-alternar').click(function(e) {
+    var win = gui.Window.get();
+    win.toggleFullscreen();
+  });
 });
 
 document.onkeydown = function(e) {

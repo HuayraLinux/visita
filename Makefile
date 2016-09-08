@@ -1,4 +1,4 @@
-VERSION=0.0.3
+VERSION=0.5.24
 NOMBRE="visita-a-la-casa-del-pueblo"
 
 N=[0m
@@ -58,7 +58,7 @@ crear_deb:
 	dpkg-buildpackage -us -uc
 
 version:
-	@bumpversion patch --current-version ${VERSION} Makefile extras/instalador.nsi --list 
+	@bumpversion patch --current-version ${VERSION} Makefile --list 
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
 	@echo "make ver_sync"
