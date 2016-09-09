@@ -9,7 +9,7 @@
   "author": "",
   "license": "GPLv3",
   "dependencies": {
-    "nwjs-hack": "iglosiggio/nwjs-hack",
+    "nwjs-hack": "iglosiggio/nwjs-hack"
   },
   "devDependencies": {
     "nw-builder": "^3.0.0"
