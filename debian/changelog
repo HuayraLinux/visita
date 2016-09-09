@@ -1,3 +1,10 @@
+visita (0.5.26) unstable; urgency=medium
+
+  * Arreglo menor.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 09 Sep 2016 15:36:57 -0300
+
+
 visita (0.5.25) unstable; urgency=medium
 
   * Agregada descripción y borrados archivos inútiles en el paquete
